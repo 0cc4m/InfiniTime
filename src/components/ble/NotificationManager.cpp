@@ -10,7 +10,6 @@ constexpr uint8_t NotificationManager::MessageSize;
 void NotificationManager::Push(NotificationManager::Notification&& notif) {
   notif.id = GetNextId();
   notif.valid = true;
-  newNotification = true;
   if (beginIdx > 0) {
     --beginIdx;
   } else {
@@ -121,11 +120,7 @@ void NotificationManager::Dismiss(NotificationManager::Notification::Id id) {
 }
 
 bool NotificationManager::AreNewNotificationsAvailable() const {
-  return newNotification;
-}
-
-bool NotificationManager::ClearNewNotificationFlag() {
-  return newNotification.exchange(false);
+  return size > 0;
 }
 
 size_t NotificationManager::NbNotifications() const {

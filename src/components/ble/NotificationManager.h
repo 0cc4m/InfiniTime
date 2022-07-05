@@ -44,7 +44,6 @@ namespace Pinetime {
       Notification GetPrevious(Notification::Id id) const;
       // Return the index of the notification with the specified id, if not found return NbNotifications()
       Notification::Idx IndexOf(Notification::Id id) const;
-      bool ClearNewNotificationFlag();
       bool AreNewNotificationsAvailable() const;
       void Dismiss(Notification::Id id);
 
@@ -67,8 +66,6 @@ namespace Pinetime {
       std::array<Notification, TotalNbNotifications> notifications;
       size_t beginIdx = TotalNbNotifications - 1; // index of the newest notification
       size_t size = 0;                            // number of valid notifications in buffer
-
-      std::atomic<bool> newNotification {false};
     };
   }
 }

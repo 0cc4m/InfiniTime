@@ -22,7 +22,6 @@ Notifications::Notifications(DisplayApp* app,
     systemTask {systemTask},
     mode {mode} {
 
-  notificationManager.ClearNewNotificationFlag();
   auto notification = notificationManager.GetLastNotification();
   if (notification.valid) {
     currentId = notification.id;
